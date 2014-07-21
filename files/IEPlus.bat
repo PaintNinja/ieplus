@@ -15,6 +15,7 @@ goto Fix
 goto Welcome
 )
 :Welcome
+cls
 echo %Title%
 echo %TitleBar%
 echo.
@@ -181,7 +182,7 @@ echo %TitleBar%
 echo.
 echo Checking for updates...
 echo.
-start /WAIT WaveAPI:,Update,IEPlus,18
+start /WAIT WaveAPI:,Update,IEPlus,18,,Silent
 pause
 exit
 :Credits
