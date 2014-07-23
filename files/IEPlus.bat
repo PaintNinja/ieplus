@@ -1,5 +1,5 @@
 @echo off
-SET VersionInteger=0.50
+SET VersionInteger=0.51
 SET Version=Alpha v%VersionInteger%
 SET Title=IE+                                                              %Version%
 SET ErrorTitle=IE+                                                              %Version%
@@ -172,6 +172,9 @@ REM Prepared. Overwrite the current one with our original one.
 copy /V /Y /L "%AppData%\Wave\webapps\18\InternetExplorer.lnk" "%AppData%\Microsoft\Windows\Start Menu\Programs\Internet Explorer.lnk"
 copy /V /Y /L "%AppData%\Wave\webapps\18\InternetExplorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Internet Explorer.lnk"
 )
+::Reset IP and WINSOCK configurations to fix 404 errors.
+call netsh int ip reset
+call netsh int winsock reset
 echo Done! Please restart your PC to finish off.
 pause
 exit
@@ -182,7 +185,7 @@ echo %TitleBar%
 echo.
 echo Checking for updates...
 echo.
-start /WAIT WaveAPI:,Update,IEPlus,18,,Silent
+start /WAIT WaveAPI:,Update,IEPlus,18,Silent
 pause
 exit
 :Credits
@@ -194,9 +197,10 @@ echo Credits...
 echo - Wave by Paint_Ninja
 echo - wget by gnu.org
 echo - IE regserv tool aka "IELinkFix" by thewindowsclub.com
+echo - IE homepage locker/fixer by thewindowsclub.com
 echo - IE+ malware database by Paint_Ninja
-echo - Internet Explorer by Microsoft
-echo - MS-DOS by Microsoft
+echo - Internet Explorer by Microsoft Corporation
+echo - MS-DOS by Microsoft Corporation
 echo - Everything else by Paint_Ninja
 echo.
 pause
