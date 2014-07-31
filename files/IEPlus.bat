@@ -44,19 +44,29 @@ echo %TitleBar%
 echo.
 echo Fixing IE. Please wait...
 ::Force-kill malicious tasks and the tasks that started them
-Taskkill /F /IM /T Lollipop.exe
-Taskkill /F /IM /T PCPerformer.exe
-Taskkill /F /IM /T YahooAUService.exe
-Taskkill /F /IM /T RegCleanPro.exe
-Taskkill /F /IM /T YMailAdvisor.exe
-Taskkill /F /IM /T MyPC Backup.exe
-Taskkill /F /IM /T InternetUpdaterService.exe
-Taskkill /F /IM /T ToolbarUpdaterService.exe
-Taskkill /F /IM /T apnmcp.exe
-Taskkill /F /IM /T Babylon.exe
-Taskkill /F /IM /T updater.exe
-Taskkill /F /IM /T BabylonHelper64.exe
+Taskkill /F /T /IM Lollipop.exe
+Taskkill /F /T /IM PCPerformer.exe
+Taskkill /F /T /IM YahooAUService.exe
+Taskkill /F /T /IM RegCleanPro.exe
+Taskkill /F /T /IM YMailAdvisor.exe
+Taskkill /F /T /IM MyPC Backup.exe
+Taskkill /F /T /IM InternetUpdaterService.exe
+Taskkill /F /T /IM ToolbarUpdaterService.exe
+Taskkill /F /T /IM apnmcp.exe
+Taskkill /F /T /IM Babylon.exe
+Taskkill /F /T /IM updater.exe
+Taskkill /F /T /IM BabylonHelper64.exe
+Taskkill /F /T /IM gorillaprice.exe
 ::Force-delete all malicious directories and files
+rmdir /S /Q "%ProgramFiles% (x86)\AddThis Toolbar"
+rmdir /S /Q "%ProgramFiles% (x86)\gorillaprice"
+rmdir /S /Q "%ProgramFiles% (x86)\globalUpdate"
+rmdir /S /Q "%ProgramFiles% (x86)\PCFixSpeed"
+rmdir /S /Q "%ProgramFiles% (x86)\Tor"
+rmdir /S /Q "%ProgramFiles% (x86)\SpeedItup Free"
+rmdir /S /Q "%ProgramFiles% (x86)\Probit Software"
+rmdir /S /Q "%ProgramFiles% (x86)\Systweak Support Dock"
+rmdir /S /Q "%ProgramFiles% (x86)\NewPlayer"
 rmdir /S /Q "%ProgramFiles% (x86)\Google\Update"
 rmdir /S /Q "%ProgramFiles% (x86)\Google\Google Toolbar"
 rmdir /S /Q "%ProgramFiles% (x86)\Google\GoogleToolbarNotifier"
@@ -74,6 +84,15 @@ rmdir /S /Q "%ProgramFiles% (x86)\Systweak Support Dock"
 rmdir /S /Q "%ProgramFiles% (x86)\Flowsurf"
 rmdir /S /Q "%ProgramFiles% (x86)\Mobogenie"
 rmdir /S /Q "%ProgramFiles% (x86)\SupTab"
+rmdir /S /Q "%ProgramFiles%\AddThis Toolbar"
+rmdir /S /Q "%ProgramFiles%\gorillaprice"
+rmdir /S /Q "%ProgramFiles%\globalUpdate"
+rmdir /S /Q "%ProgramFiles%\PCFixSpeed"
+rmdir /S /Q "%ProgramFiles%\Tor"
+rmdir /S /Q "%ProgramFiles%\SpeedItup Free"
+rmdir /S /Q "%ProgramFiles%\Probit Software"
+rmdir /S /Q "%ProgramFiles%\Systweak Support Dock"
+rmdir /S /Q "%ProgramFiles%\NewPlayer"
 rmdir /S /Q "%ProgramFiles%\Google\Update"
 rmdir /S /Q "%ProgramFiles%\Google\Google Toolbar"
 rmdir /S /Q "%ProgramFiles%\Google\GoogleToolbarNotifier"
@@ -100,6 +119,10 @@ rmdir /S /Q "%ProgramData%\Microsoft\BingBar"
 rmdir /S /Q "%ProgramData%\INTERNETUPDATER"
 rmdir /S /Q "%ProgramData%\Systweak"
 rmdir /S /Q "%ProgramData%\IePluginService"
+rmdir /S /Q "%AppData%\Nosibay"
+rmdir /S /Q "%AppData%\PCFixSpeed"
+rmdir /S /Q "%AppData%\RocketUpdater"
+rmdir /S /Q "%AppData%\tor"
 rmdir /S /Q "%AppData%\newnext.me"
 rmdir /S /Q "%AppData%\BabSolution"
 rmdir /S /Q "%AppData%\Babylon"
