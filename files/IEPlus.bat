@@ -44,33 +44,40 @@ echo %TitleBar%
 echo.
 echo Fixing IE. Please wait...
 ::Force-kill malicious tasks and the tasks that started them
-Taskkill /F /T /IM AdvancedSystemProtector.exe
-Taskkill /F /T /IM DatamngrCoordinator.exe
-Taskkill /F /T /IM DatamngrUI.exe
-Taskkill /F /T /IM dsmonitor.exe
-Taskkill /F /T /IM iLivid.exe
-Taskkill /F /T /IM "MyPC Backup.exe"
-Taskkill /F /T /IM OptimizerPro.exe
-Taskkill /F /T /IM RBClientService.exe
-Taskkill /F /T /IM spassist.exe
-Taskkill /F /T /IM StormAlertsApp.exe
-Taskkill /F /T /IM aabarsvc.exe
-Taskkill /F /T /IM aabmon64.exe
-Taskkill /F /T /IM aabmon.exe
-Taskkill /F /T /IM Lollipop.exe
-Taskkill /F /T /IM PCPerformer.exe
-Taskkill /F /T /IM YahooAUService.exe
-Taskkill /F /T /IM RegCleanPro.exe
-Taskkill /F /T /IM YMailAdvisor.exe
-Taskkill /F /T /IM MyPC Backup.exe
-Taskkill /F /T /IM InternetUpdaterService.exe
-Taskkill /F /T /IM ToolbarUpdaterService.exe
-Taskkill /F /T /IM apnmcp.exe
-Taskkill /F /T /IM Babylon.exe
-Taskkill /F /T /IM updater.exe
-Taskkill /F /T /IM BabylonHelper64.exe
-Taskkill /F /T /IM gorillaprice.exe
+set tk=Taskkill
+%tk% /F /T /IM AdvancedSystemProtector.exe
+%tk% /F /T /IM DatamngrCoordinator.exe
+%tk% /F /T /IM DatamngrUI.exe
+%tk% /F /T /IM dsmonitor.exe
+%tk% /F /T /IM iLivid.exe
+%tk% /F /T /IM "MyPC Backup.exe"
+%tk% /F /T /IM OptimizerPro.exe
+%tk% /F /T /IM RBClientService.exe
+%tk% /F /T /IM spassist.exe
+%tk% /F /T /IM StormAlertsApp.exe
+%tk% /F /T /IM aabarsvc.exe
+%tk% /F /T /IM aabmon64.exe
+%tk% /F /T /IM aabmon.exe
+%tk% /F /T /IM Lollipop.exe
+%tk% /F /T /IM PCPerformer.exe
+%tk% /F /T /IM YahooAUService.exe
+%tk% /F /T /IM RegCleanPro.exe
+%tk% /F /T /IM YMailAdvisor.exe
+%tk% /F /T /IM MyPC Backup.exe
+%tk% /F /T /IM InternetUpdaterService.exe
+%tk% /F /T /IM ToolbarUpdaterService.exe
+%tk% /F /T /IM apnmcp.exe
+%tk% /F /T /IM Babylon.exe
+%tk% /F /T /IM updater.exe
+%tk% /F /T /IM BabylonHelper64.exe
+%tk% /F /T /IM gorillaprice.exe
 ::Force-delete all malicious directories and files
+rd /S /Q "%ProgramFiles% (x86)\PC Health Kit"
+rd /S /Q "%ProgramFiles% (x86)\SearchProtect"
+rd /S /Q "%ProgramFiles% (x86)\IObit Apps Toolbar"
+rd /S /Q "%ProgramFiles% (x86)\Driver Support"
+rd /S /Q "%ProgramFiles% (x86)\DriverUpdate"
+rd /S /Q "%ProgramFiles% (x86)\SmartSaver+ 15"
 rd /S /Q "%ProgramFiles% (x86)\ASP"
 rd /S /Q "%ProgramFiles% (x86)\Astromenda"
 rd /S /Q "%ProgramFiles% (x86)\Deal Keeper"
@@ -115,6 +122,13 @@ rd /S /Q "%ProgramFiles% (x86)\Systweak Support Dock"
 rd /S /Q "%ProgramFiles% (x86)\Flowsurf"
 rd /S /Q "%ProgramFiles% (x86)\Mobogenie"
 rd /S /Q "%ProgramFiles% (x86)\SupTab"
+rd /S /Q "%ProgramFiles% (x86)\Common Files\Spigot"
+rd /S /Q "%ProgramFiles%\PC Health Kit"
+rd /S /Q "%ProgramFiles%\SearchProtect"
+rd /S /Q "%ProgramFiles%\IObit Apps Toolbar"
+rd /S /Q "%ProgramFiles%\Driver Support"
+rd /S /Q "%ProgramFiles%\DriverUpdate"
+rd /S /Q "%ProgramFiles%\SmartSaver+ 15"
 rd /S /Q "%ProgramFiles%\ASP"
 rd /S /Q "%ProgramFiles%\Astromenda"
 rd /S /Q "%ProgramFiles%\Deal Keeper"
@@ -158,6 +172,7 @@ rd /S /Q "%ProgramFiles%\Enigma Software Group"
 rd /S /Q "%ProgramFiles%\Flowsurf"
 rd /S /Q "%ProgramFiles%\Mobogenie"
 rd /S /Q "%ProgramFiles%\SupTab"
+rd /S /Q "%CommonProgramFiles%\Spigot"
 rd /S /Q "%ProgramData%\Datamngr"
 rd /S /Q "%ProgramData%\iolo"
 rd /S /Q "%ProgramData%\Uniblue"
@@ -185,6 +200,8 @@ rd /S /Q "%AppData%\BabSolution"
 rd /S /Q "%AppData%\Babylon"
 rd /S /Q "%AppData%\PerformerSoft"
 rd /S /Q "%AppData%\systweak"
+rd /S /Q "%AppData%\Slick Savings"
+rd /S /Q "%AppData%\PC Health Kit"
 rd /S /Q "%LocalAppData%\EliteUnzip_aa"
 rd /S /Q "%LocalAppData%\iLivid"
 rd /S /Q "%LocalAppData%\iMesh"
@@ -195,27 +212,23 @@ rd /S /Q "%LocalAppData%\SweepTools"
 rd /S /Q "%LocalAppData%\genienext"
 rd /S /Q "%LocalAppData%\Babylon"
 rd /S /Q "%LocalAppData%\Temp\Iminent"
+rd /S /Q "%LocalAppData%\globalUpdate"
+rd /S /Q "%LocalAppData%\PC_Drivers_Headquarters"
+rd /S /Q "%LocalAppData%\Slick Savings"
+rd /S /Q "%LocalAppData%\SlaimWare Utilities Inc"
 rd /S /Q "%LocalAppData%Low\buenosearch LTD"
+rd /S /Q "%LocalAppData%Low\Search Settings"
+rd /S /Q "%LocalAppData%Low\EliteUnzip_aa"
+rd /S /Q "%LocalAppData%Low\EliteUnzip_aaEl"
+rd /S /Q "%LocalAppData%Low\IAC"
+rd /S /Q "%LocalAppData%Low\ilividbandoomoviestoolbar"
+rd /S /Q "%LocalAppData%Low\imeshmusicboxtoolbarnew"
+rd /S /Q "%LocalAppData%Low\InternetSpeedTracker_9tEl"
+rd /S /Q "%LocalAppData%Low\searchresultstb"
 rd /S /Q "%AppData%\Microsoft\Windows\Start Menu\Programs\Elite Unzip"
 rd /S /Q "%AppData%\Microsoft\Windows\Start Menu\Programs\MiPony"
 rd /S /Q "%AppData%\Microsoft\Windows\Start Menu\Programs\MyPC Backup"
 rd /S /Q "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup"
-
-
-if not exist "C:\Users" (
-set AltDrive=True
-set LocalLowAppData=D:\Users\%USERNAME%\AppData\LocalLow
-) else (
-set AltDrive=False
-set LocalLowAppData=C:\Users\%USERNAME%\AppData\LocalLow
-)
-rd /S /Q "%LocalLowAppData%\EliteUnzip_aa"
-rd /S /Q "%LocalLowAppData%\EliteUnzip_aaEl"
-rd /S /Q "%LocalLowAppData%\IAC"
-rd /S /Q "%LocalLowAppData%\ilividbandoomoviestoolbar"
-rd /S /Q "%LocalLowAppData%\imeshmusicboxtoolbarnew"
-rd /S /Q "%LocalLowAppData%\InternetSpeedTracker_9tEl"
-rd /S /Q "%LocalLowAppData%\searchresultstb"
 
 ::Stop malicious services and purposely break parts of them
 ::to help prevent any deleted malware from reviving.
