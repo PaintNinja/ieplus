@@ -256,9 +256,9 @@ sc config RBClientService start= disabled
 sc config "Computer Backup (MyPC Backup)" start= disabled
 sc config "Datamngr Coordinator" start= disabled
 sc config ioloToolService start= disabled
-sc stop "Search Protect Service" start = disabled
-sc stop "globalUpdate Update Service (globalUpdate)" start = disabled
-sc stop "globalUpdate Update Service (globalUpdatem)" start = disabled
+sc config "Search Protect Service" start = disabled
+sc config "globalUpdate Update Service (globalUpdate)" start = disabled
+sc config "globalUpdate Update Service (globalUpdatem)" start = disabled
 
 ::Reset IE's homepage to Bing
 ::This is to get rid of any potentially malicious homepages currently set
@@ -334,6 +334,10 @@ reg add "HKCR\TypeLib\{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}\1.1\0\win32" /ve /t
 ::Reset Start menu and task bar links to the original to undo any "force-homepage" hijacks
 REM 1) Check if we have it prepared
 :CheckFile
+if not exist "%AppData%\Wave\libs\wget.exe" (
+echo Wave not installed. Skipping start menu and task bar link hijack fixes...
+goto SkipCheckFile
+)
 if not exist "%AppData%\Wave\webapps\18\InternetExplorer.lnk" (
 REM Not prepared. Let's get it from our server using Wave's wget lib! :D
 call %AppData%\Wave\libs\wget.exe -q --directory-prefix=%AppData%\Wave\webapps\18 --no-check-certificate --secure-protocol=auto %Serv%\InternetExplorer.lnk
@@ -343,9 +347,9 @@ REM Prepared. Overwrite the current one with our original one.
 copy /V /Y /L "%AppData%\Wave\webapps\18\InternetExplorer.lnk" "%AppData%\Microsoft\Windows\Start Menu\Programs\Internet Explorer.lnk"
 copy /V /Y /L "%AppData%\Wave\webapps\18\InternetExplorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Internet Explorer.lnk"
 )
-::Reset IP and WINSOCK configurations to fix 404 errors.
+:SkipCheckFile
+::Reset IP configurations to fix 404 errors.
 call netsh int ip reset
-call netsh int winsock reset
 echo Done! Please restart your PC to finish off.
 pause
 exit
