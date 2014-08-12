@@ -1,5 +1,5 @@
 @echo off
-SET VersionInteger=0.55
+SET VersionInteger=0.56
 SET Version=Alpha v%VersionInteger%
 SET Title=IE+                                                              %Version%
 SET ErrorTitle=IE+                                                              %Version%
@@ -71,6 +71,10 @@ set tk=Taskkill
 %tk% /F /T /IM updater.exe
 %tk% /F /T /IM BabylonHelper64.exe
 %tk% /F /T /IM gorillaprice.exe
+%tk% /F /T /IM BackgroundHost64.exe
+%tk% /F /T /IM cltmng.exe
+%tk% /F /T /IM CltMngSvc.exe
+%tk% /F /T /IM cltmngui.exe
 ::Force-delete all malicious directories and files
 rd /S /Q "%ProgramFiles% (x86)\PC Health Kit"
 rd /S /Q "%ProgramFiles% (x86)\SearchProtect"
@@ -122,6 +126,10 @@ rd /S /Q "%ProgramFiles% (x86)\Systweak Support Dock"
 rd /S /Q "%ProgramFiles% (x86)\Flowsurf"
 rd /S /Q "%ProgramFiles% (x86)\Mobogenie"
 rd /S /Q "%ProgramFiles% (x86)\SupTab"
+rd /S /Q "%ProgramFiles% (x86)\SaveClicker"
+rd /S /Q "%ProgramFiles% (x86)\PortalMore"
+rd /S /Q "%ProgramFiles% (x86)\UpperFind"
+rd /S /Q "%ProgramFiles% (x86)\Speed Test"
 rd /S /Q "%ProgramFiles% (x86)\Common Files\Spigot"
 rd /S /Q "%ProgramFiles%\PC Health Kit"
 rd /S /Q "%ProgramFiles%\SearchProtect"
@@ -172,6 +180,9 @@ rd /S /Q "%ProgramFiles%\Enigma Software Group"
 rd /S /Q "%ProgramFiles%\Flowsurf"
 rd /S /Q "%ProgramFiles%\Mobogenie"
 rd /S /Q "%ProgramFiles%\SupTab"
+rd /S /Q "%ProgramFiles%\SaveClicker"
+rd /S /Q "%ProgramFiles%\PortalMore"
+rd /S /Q "%ProgramFiles%\UpperFind"
 rd /S /Q "%CommonProgramFiles%\Spigot"
 rd /S /Q "%ProgramData%\Datamngr"
 rd /S /Q "%ProgramData%\iolo"
@@ -235,13 +246,38 @@ rd /S /Q "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup"
 sc stop "Elite UnzipService"
 sc stop "RBClientService"
 sc stop "Computer Backup (MyPC Backup)"
-sc stop Datamngr Coordinator"
+sc stop "Datamngr Coordinator"
 sc stop ioloToolService
+sc stop "Search Protect Service"
+sc stop "globalUpdate Update Service (globalUpdate)"
+sc stop "globalUpdate Update Service (globalUpdatem)"
 sc config "Elite UnzipService" start= disabled
 sc config RBClientService start= disabled
 sc config "Computer Backup (MyPC Backup)" start= disabled
 sc config "Datamngr Coordinator" start= disabled
 sc config ioloToolService start= disabled
+sc stop "Search Protect Service" start = disabled
+sc stop "globalUpdate Update Service (globalUpdate)" start = disabled
+sc stop "globalUpdate Update Service (globalUpdatem)" start = disabled
+
+::Reset IE's homepage to Bing
+::This is to get rid of any potentially malicious homepages currently set
+set rieh=resetiehomepage.reg
+> "%TMP%\%rieh%" echo Windows Registry Editor 5.00
+>> "%TMP%\%rieh%" echo.
+>> "%TMP%\%rieh%" echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer]
+>> "%TMP%\%rieh%" echo.
+>> "%TMP%\%rieh%" echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Control Panel]
+>> "%TMP%\%rieh%" echo "HomePage"=dword:00000001
+>> "%TMP%\%rieh%" echo.
+>> "%TMP%\%rieh%" echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Main]
+>> "%TMP%\%rieh%" echo "Start Page"="www.bing.com"
+>> "%TMP%\%rieh%" echo.
+>> "%TMP%\%rieh%" echo [HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
+>> "%TMP%\%rieh%" echo "Start Page"="www.bing.com"
+>> "%TMP%\%rieh%" echo.
+>> "%TMP%\%rieh%" echo.
+regedit /S "%TMP%\resetiehomepage.reg"
 
 ::Re-register all Internet Explorer files to defaults
 SET rs32=regsvr32
@@ -332,7 +368,7 @@ echo Credits...
 echo - Wave by Paint_Ninja
 echo - wget by gnu.org
 echo - IE regserv tool aka "IELinkFix" by thewindowsclub.com
-echo - IE homepage locker/fixer by thewindowsclub.com
+echo - IE homepage locker/fixer by thewindowsclub.com and Paint_Ninja
 echo - IE+ malware database by Paint_Ninja
 echo - Internet Explorer by Microsoft Corporation
 echo - MS-DOS by Microsoft Corporation
