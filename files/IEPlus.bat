@@ -1,5 +1,5 @@
 @echo off
-SET VersionInteger=0.56
+SET VersionInteger=0.57
 SET Version=Alpha v%VersionInteger%
 SET Title=IE+                                                              %Version%
 SET ErrorTitle=IE+                                                              %Version%
@@ -75,6 +75,14 @@ set tk=Taskkill
 %tk% /F /T /IM cltmng.exe
 %tk% /F /T /IM CltMngSvc.exe
 %tk% /F /T /IM cltmngui.exe
+%tk% /F /T /IM PluginService.exe
+%tk% /F /T /IM HpUI.exe
+%tk% /F /T /IM Loader32.exe
+%tk% /F /T /IM Loader64.exe
+%tk% /F /T /IM WajamHttpServer.exe
+%tk% /F /T /IM WajamInternetEnhancer.exe
+%tk% /F /T /IM WajamInternetEnhancerService.exe
+%tk% /F /T /IM UninstallManager.exe
 ::Force-delete all malicious directories and files
 rd /S /Q "%ProgramFiles% (x86)\PC Health Kit"
 rd /S /Q "%ProgramFiles% (x86)\SearchProtect"
@@ -131,6 +139,7 @@ rd /S /Q "%ProgramFiles% (x86)\PortalMore"
 rd /S /Q "%ProgramFiles% (x86)\UpperFind"
 rd /S /Q "%ProgramFiles% (x86)\Speed Test"
 rd /S /Q "%ProgramFiles% (x86)\Common Files\Spigot"
+rd /S /Q "%ProgramFiles% (x86)\Wajam"
 rd /S /Q "%ProgramFiles%\PC Health Kit"
 rd /S /Q "%ProgramFiles%\SearchProtect"
 rd /S /Q "%ProgramFiles%\IObit Apps Toolbar"
@@ -183,6 +192,7 @@ rd /S /Q "%ProgramFiles%\SupTab"
 rd /S /Q "%ProgramFiles%\SaveClicker"
 rd /S /Q "%ProgramFiles%\PortalMore"
 rd /S /Q "%ProgramFiles%\UpperFind"
+rd /S /Q "%ProgramFiles%\Wajam"
 rd /S /Q "%CommonProgramFiles%\Spigot"
 rd /S /Q "%ProgramData%\Datamngr"
 rd /S /Q "%ProgramData%\iolo"
@@ -197,6 +207,7 @@ rd /S /Q "%ProgramData%\Microsoft\BingBar"
 rd /S /Q "%ProgramData%\INTERNETUPDATER"
 rd /S /Q "%ProgramData%\Systweak"
 rd /S /Q "%ProgramData%\IePluginService"
+rd /S /Q "%ProgramData%\IePluginServices"
 rd /S /Q "%AppData%\Astromenda"
 rd /S /Q "%AppData%\Mipony"
 rd /S /Q "%AppData%\MusicNet"
@@ -213,6 +224,7 @@ rd /S /Q "%AppData%\PerformerSoft"
 rd /S /Q "%AppData%\systweak"
 rd /S /Q "%AppData%\Slick Savings"
 rd /S /Q "%AppData%\PC Health Kit"
+rd /S /Q "%AppData%\webssearches"
 rd /S /Q "%LocalAppData%\EliteUnzip_aa"
 rd /S /Q "%LocalAppData%\iLivid"
 rd /S /Q "%LocalAppData%\iMesh"
@@ -358,11 +370,15 @@ cls
 echo %Title%
 echo %TitleBar%
 echo.
-echo Checking for updates...
-echo.
-start /WAIT WaveAPI:,Update,IEPlus,18,Silent
+if not exist "%AppData%\Wave" (
+echo Wave not installed! Wave's required to update IEPlus.
 pause
-exit
+goto Welcome
+)
+echo Updating IEPlus using Wave and then restarting...
+echo.
+start /WAIT Wave:,CleanCache,6,18
+start Wave:,IEPlus,18 && exit
 :Credits
 cls
 echo %Title%
@@ -379,4 +395,4 @@ echo - MS-DOS by Microsoft Corporation
 echo - Everything else by Paint_Ninja
 echo.
 pause
-exit
+goto Welcome
