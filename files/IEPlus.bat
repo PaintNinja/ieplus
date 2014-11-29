@@ -1,8 +1,8 @@
 @echo off
-SET VersionInteger=0.8
+SET VersionInteger=0.81
 SET Version=Beta v%VersionInteger%
-SET Title=IE+                                                                %Version%
-SET ErrorTitle=IE+                                                                %Version%
+SET Title=IE+                                                               %Version%
+SET ErrorTitle=IE+                                                               %Version%
 SET TitleBar================================================================================
 SET SubTitleBar=-------------------------------------------------------------------------------
 SET ErrorTitleBar=*******************************************************************************
@@ -441,6 +441,6 @@ echo.
 pause
 goto Welcome
 :GUI
-start Menu.hta && exit
+start %AppData%\Wave\webapps\18\Menu.hta && exit
 :Exit
 exit

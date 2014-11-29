@@ -1,0 +1,4 @@
+What's new in IE+ v0.81
+========================
+
+* Fixed a bug causing IE+ to fail launching
