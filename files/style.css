@@ -1,0 +1,69 @@
+@font-face {
+	font-family: OpenSans;
+	src: url('fonts/opensans-regular.woff') format('woff'),
+		 url('fonts/opensans-regular.eot') format('embedded-opentype');
+}
+@font-face {
+	font-family: OpenSansLight;
+	src: url('fonts/opensans-light.woff') format('woff'),
+		 url('fonts/opensans-light.eot') format('embedded-opentype');
+}
+#container {
+	width: 100%;
+	
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 0%;
+	margin-right: 0%;
+	
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	
+	background-color: #fff;
+	
+	background-image: url("img/Logo.svg");
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-size: 20%;
+}
+#container .text {
+	margin-left: 1%;
+
+	font-family: OpenSans, sans-serif!important;
+    font-size: 14pt;
+}
+body {
+	background-color: #2671eb;
+}
+.closebutton {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+
+	text-align: right;
+	color: white;
+	
+	font-family: OpenSans, sans-serif!important;
+	font-size: 22pt;
+}
+a, a:visited, a:hover {
+	color: #2671eb;
+}
+.closebutton a, .closebutton a:visited, .closebutton a:hover {
+	background-color: #E74C3C;
+	color: white;
+	text-decoration: none;
+}
+h1 {
+	color: #2671eb;
+    font-family: OpenSansLight, sans-serif!important;
+    font-size: 50pt;
+
+	margin-bottom: 0px;
+}
+iframe {
+	display: none;
+}

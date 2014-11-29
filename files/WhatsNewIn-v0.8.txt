@@ -1,0 +1,13 @@
+What's new in IE+ v0.8
+=======================
+
++ GUI!!!
++ Option to toggle between GUI and Console modes
++ IE+ icon in the taskbar
++ After updating, IEPlus will tell you it has been successfully updated, and tell you the new version you are now running.
++ New welcome screen on Console mode
++ When deleting folders, IE+ now checks if they exist first to stop the console spam
++ During the fixing process, IE+ will now inform you on its progress
++ IE+ now accepts arguments such as "Credits" and "Update" on launch
++ IE+ has now reached the Beta milestone! :D
+* In Console mode, IE+ will now close properly when choosing the "Quit" option, rather than just erroring the batch script and therefore forcing it to close
