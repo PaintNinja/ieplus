@@ -8,12 +8,6 @@ SET SubTitleBar=----------------------------------------------------------------
 SET ErrorTitleBar=*******************************************************************************
 SET Serv=https://paintninja.github.io/ieplus/files
 Title=IE+ - %Version%
-shift
-if "%1"=="Fix" (
-goto Fix
-) else (
-goto CheckArgs
-)
 :CheckArgs
 if "%1"=="Fix" goto Fix
 if "%1"=="Update" goto Update
