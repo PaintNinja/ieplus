@@ -1,0 +1,5 @@
+What's new in IE+ v0.85
+========================
++ InternetExplorer.lnk is now included in the RAR for faster start menu and task bar hijack fixes
+* Updated IE+ to support Wave v0.58
+- Dropped support for older versions of Wave

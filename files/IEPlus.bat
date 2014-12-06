@@ -1,5 +1,5 @@
 @echo off
-SET VersionInteger=0.81
+SET VersionInteger=0.85
 SET Version=Beta v%VersionInteger%
 SET Title=IE+                                                               %Version%
 SET ErrorTitle=IE+                                                               %Version%
@@ -371,18 +371,18 @@ echo.
 ::Reset Start menu and task bar links to the original to undo any "force-homepage" hijacks
 REM 1) Check if we have it prepared
 :CheckFile
-if not exist "%AppData%\Wave\libs\wget.exe" (
+if not exist "%SystemDrive%\Wave\libs\wget.exe" (
 echo Wave not installed. Skipping start menu and task bar link hijack fixes...
 goto SkipCheckFile
 )
-if not exist "%AppData%\Wave\webapps\18\InternetExplorer.lnk" (
+if not exist "%SystemDrive%\Wave\webapps\18\InternetExplorer.lnk" (
 REM Not prepared. Let's get it from our server using Wave's wget lib! :D
-call %AppData%\Wave\libs\wget.exe -q --directory-prefix=%AppData%\Wave\webapps\18 --no-check-certificate --secure-protocol=auto %Serv%\InternetExplorer.lnk
+call %SystemDrive%\Wave\libs\wget.exe -q --directory-prefix=%SystemDrive%\Wave\webapps\18 --no-check-certificate --secure-protocol=auto %Serv%\InternetExplorer.lnk
 goto CheckFile
 ) else (
 REM Prepared. Overwrite the current one with our original one.
-copy /V /Y /L "%AppData%\Wave\webapps\18\InternetExplorer.lnk" "%AppData%\Microsoft\Windows\Start Menu\Programs\Internet Explorer.lnk"
-copy /V /Y /L "%AppData%\Wave\webapps\18\InternetExplorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Internet Explorer.lnk"
+copy /V /Y /L "%SystemDrive%\Wave\webapps\18\InternetExplorer.lnk" "%AppData%\Microsoft\Windows\Start Menu\Programs\Internet Explorer.lnk"
+copy /V /Y /L "%SystemDrive%\Wave\webapps\18\InternetExplorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Internet Explorer.lnk"
 )
 :SkipCheckFile
 ::Reset IP configurations to fix 404 errors.
@@ -400,7 +400,7 @@ cls
 echo %Title%
 echo %TitleBar%
 echo.
-if not exist "%AppData%\Wave" (
+if not exist "%SystemDrive%\Wave" (
 echo Wave not installed! Wave's required to update IEPlus.
 pause
 goto Welcome
@@ -435,6 +435,6 @@ echo.
 pause
 goto Welcome
 :GUI
-start %AppData%\Wave\webapps\18\Menu.hta && exit
+start %SystemDrive%\Wave\webapps\18\Menu.hta && exit
 :Exit
 exit
